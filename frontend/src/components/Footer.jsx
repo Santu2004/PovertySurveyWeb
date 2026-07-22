@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>&copy; 2026 Poverty Survey Management System</p>
-      <p>Developed by Santu</p>
+      <p>All Rights Reserved</p>
     </footer>
   );
 }

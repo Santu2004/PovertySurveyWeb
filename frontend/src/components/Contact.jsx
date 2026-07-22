@@ -1,28 +1,36 @@
-<section className="contact" id="contact">
+import "./Contact.css";
 
-  <h2>Contact Us</h2>
+function Contact() {
+  return (
+    <section className="contact" id="contact">
 
-  <p className="contact-subtitle">
-    Have questions or need assistance? Feel free to contact us.
-  </p>
+      <h2>Contact Us</h2>
 
-  <div className="contact-container">
+      <p className="contact-subtitle">
+        Have questions or need assistance? Feel free to contact us.
+      </p>
 
-    <div className="contact-card">
-      <h3>📍 Address</h3>
-      <p>Rayagada, Odisha, India</p>
-    </div>
+      <div className="contact-container">
 
-    <div className="contact-card">
-      <h3>📧 Email</h3>
-      <p>povertysurvey@gmail.com</p>
-    </div>
+        <div className="contact-card">
+          <h3>📍 Address</h3>
+          <p>Rayagada, Odisha, India,pin - 765001</p>
+        </div>
 
-    <div className="contact-card">
-      <h3>📞 Phone</h3>
-      <p>+91 8260591547,8260639982</p>
-    </div>
+        <div className="contact-card">
+          <h3>📧 Email</h3>
+          <p>povertysurvey@gmail.com</p>
+        </div>
 
-  </div>
+        <div className="contact-card">
+          <h3>📞 Phone</h3>
+          <p>+91 8260591547, +91 8260639982</p>
+        </div>
 
-</section>
+      </div>
+
+    </section>
+  );
+}
+
+export default Contact;
