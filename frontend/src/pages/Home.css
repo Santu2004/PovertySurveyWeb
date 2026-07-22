@@ -1,0 +1,163 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+.home{
+    width:100%;
+}
+
+/* Hero */
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px;
+    background:linear-gradient(135deg,#0d6efd,#4dabf7);
+    color:white;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-text h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:35px;
+    max-width:650px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.hero-buttons button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.survey-btn{
+    background:#28a745;
+    color:white;
+}
+
+.survey-btn:hover{
+    background:#218838;
+}
+
+.login-btn{
+    background:white;
+    color:#0d6efd;
+}
+
+.login-btn:hover{
+    background:#ececec;
+}
+
+.hero-image{
+    flex:1;
+    text-align:center;
+}
+
+.hero-image img{
+    width:500px;
+    max-width:100%;
+}
+
+/* Features */
+
+.features{
+    padding:80px 20px;
+    background:#f8f9fa;
+}
+
+.features h2{
+    text-align:center;
+    color:#0d6efd;
+    font-size:40px;
+    margin-bottom:50px;
+}
+
+.feature-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.feature-card{
+    width:270px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+}
+
+.feature-card h3{
+    color:#0d6efd;
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    line-height:1.6;
+    color:#555;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.hero{
+    padding:50px 20px;
+    flex-direction:column-reverse;
+    text-align:center;
+}
+
+.hero-text h1{
+    font-size:38px;
+}
+
+.hero-text p{
+    font-size:18px;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.hero-image img{
+    width: 800px;
+    margin-bottom:40px;
+}
+
+.features h2{
+    font-size:32px;
+}
+
+}

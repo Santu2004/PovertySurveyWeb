@@ -1,0 +1,104 @@
+
+
+.responses-container {
+  width: 95%;
+  margin: 30px auto;
+  padding-bottom: 40px;
+}
+
+.responses-container h1 {
+  text-align: center;
+  color: #1e3a8a;
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+
+
+
+.responses-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+
+.responses-container th {
+  background: #2563eb;
+  color: white;
+  padding: 15px;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+
+.responses-container td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+
+
+.responses-container tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+
+
+.responses-container tbody tr:hover {
+  background: #e0f2fe;
+}
+
+
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+
+
+@media (max-width: 992px) {
+
+  .responses-container {
+    overflow-x: auto;
+  }
+
+  .responses-container table {
+    min-width: 1300px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .responses-container h1 {
+    font-size: 28px;
+  }
+
+  .responses-container th,
+  .responses-container td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .delete-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
