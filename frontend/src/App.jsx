@@ -8,8 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Responses from "./pages/Responses";
 import Reports from "./pages/Reports";
 import LearnMore from "./pages/LearnMore";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 function App() {
   return (
