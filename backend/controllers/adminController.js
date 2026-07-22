@@ -1,4 +1,4 @@
-import Admin from "../models/u.js";
+import Admin from "../models/Adm.js";
 import Survey from "../models/Survey.js";
 
 // ===============================
