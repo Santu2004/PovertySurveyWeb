@@ -1,35 +1,21 @@
-import "./Contact.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Contact() {
   return (
-    <section className="contact" id="contact">
-
-      <h2>Contact Us</h2>
-
-      <p className="contact-subtitle">
-        Have questions or need assistance? Feel free to contact us.
-      </p>
+    <>
+      <Navbar />
 
       <div className="contact-container">
+        <h1>Contact Us</h1>
 
-        <div className="contact-card">
-          <h3>📍 Address</h3>
-          <p>Rayagada, Odisha, India,pin - 765001</p>
-        </div>
-
-        <div className="contact-card">
-          <h3>📧 Email</h3>
-          <p>povertysurvey@gmail.com</p>
-        </div>
-
-        <div className="contact-card">
-          <h3>📞 Phone</h3>
-          <p>+91 8260591547, +91 8260639982</p>
-        </div>
-
+        <p>Email: support@povertysurvey.com</p>
+        <p>Phone: +91 9876543210</p>
+        <p>Address: Bhubaneswar, Odisha, India</p>
       </div>
 
-    </section>
+      <Footer />
+    </>
   );
 }
 
