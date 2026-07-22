@@ -8,19 +8,26 @@ import Dashboard from "./pages/Dashboard";
 import Responses from "./pages/Responses";
 import Reports from "./pages/Reports";
 import LearnMore from "./pages/LearnMore";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Pages */}
         <Route path="/" element={<Home />} />
         <Route path="/survey" element={<SurveyForm />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/learn-more" element={<LearnMore />} />
         <Route path="/thankyou" element={<ThankYou />} />
+
+        {/* Admin Pages */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/reports" element={<Reports />} />
-        <Route path="/learn-more" element={<LearnMore />} />
       </Routes>
     </BrowserRouter>
   );
