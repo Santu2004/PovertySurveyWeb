@@ -1,5 +1,5 @@
-import Admin from "../models/Admin.js";
-import Survey from "../models/Survey.js";
+import Admin from "../models/gh.js";
+import Survey from "../models/gj.js";
 
 // ===============================
 // Admin Login

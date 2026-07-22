@@ -1,4 +1,4 @@
-import Survey from "../models/Survey.js";
+import Survey from "../models/gj.js";
 
 // ========================================
 // Get All Surveys

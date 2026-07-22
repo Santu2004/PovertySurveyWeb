@@ -31,19 +31,13 @@ function AdminLogin() {
       const res = await api.post("/admin/login", admin);
 
       if (res.data.success) {
-        alert("Login Successful");
-
-        // Save login status
         localStorage.setItem("isAdmin", "true");
         localStorage.setItem("username", admin.username);
 
+        alert("Login Successful");
         navigate("/dashboard");
-      } else {
-        alert(res.data.message || "Invalid Username or Password");
       }
     } catch (error) {
-      console.error(error);
-
       if (error.response) {
         alert(error.response.data.message);
       } else {
@@ -63,15 +57,14 @@ function AdminLogin() {
           <h1>Admin Login</h1>
 
           <form onSubmit={handleLogin}>
-
             <div className="input-group">
               <label>Username</label>
 
               <input
                 type="text"
                 name="username"
-                placeholder="Enter Username"
                 value={admin.username}
+                placeholder="Enter Username"
                 onChange={handleChange}
                 required
               />
@@ -83,8 +76,8 @@ function AdminLogin() {
               <input
                 type="password"
                 name="password"
-                placeholder="Enter Password"
                 value={admin.password}
+                placeholder="Enter Password"
                 onChange={handleChange}
                 required
               />
@@ -97,7 +90,6 @@ function AdminLogin() {
             >
               {loading ? "Logging in..." : "Login"}
             </button>
-
           </form>
         </div>
       </div>
