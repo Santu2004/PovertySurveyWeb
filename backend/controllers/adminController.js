@@ -1,21 +1,19 @@
-import db from "../models/db.js";
+import Admin from "../models/Admin.js";
+import Survey from "../models/Survey.js";
 
+// ===============================
 // Admin Login
-export const adminLogin = (req, res) => {
-  const { username, password } = req.body;
+// ===============================
+export const adminLogin = async (req, res) => {
+  try {
+    const { username, password } = req.body;
 
-  const sql =
-    "SELECT * FROM admin WHERE username = ? AND password = ?";
+    const admin = await Admin.findOne({
+      username,
+      password,
+    });
 
-  db.query(sql, [username, password], (err, result) => {
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        message: "Database Error",
-      });
-    }
-
-    if (result.length === 0) {
+    if (!admin) {
       return res.status(401).json({
         success: false,
         message: "Invalid Username or Password",
@@ -26,42 +24,74 @@ export const adminLogin = (req, res) => {
       success: true,
       message: "Login Successful",
       admin: {
-        id: result[0].id,
-        username: result[0].username,
+        id: admin._id,
+        username: admin.username,
       },
     });
-  });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
 };
 
+// ===============================
 // Dashboard Statistics
-export const getDashboardStats = (req, res) => {
-  const sql = `
-    SELECT
-      COUNT(*) AS totalSurveys,
-      SUM(familyMembers) AS totalFamilyMembers,
-      AVG(monthlyIncome) AS averageIncome,
-      SUM(CASE WHEN monthlyIncome < 10000 THEN 1 ELSE 0 END) AS belowPovertyLine,
-      SUM(CASE WHEN ownHouse = 'Yes' THEN 1 ELSE 0 END) AS ownHouse,
-      SUM(CASE WHEN electricity = 'No' THEN 1 ELSE 0 END) AS noElectricity,
-      SUM(CASE WHEN toilet = 'No' THEN 1 ELSE 0 END) AS noToilet,
-      SUM(CASE WHEN healthInsurance = 'No' THEN 1 ELSE 0 END) AS noInsurance,
-      SUM(CASE WHEN internet = 'Yes' THEN 1 ELSE 0 END) AS internetUsers,
-      SUM(CASE WHEN smartphone = 'Yes' THEN 1 ELSE 0 END) AS smartphoneUsers
-    FROM surveys
-  `;
+// ===============================
+export const getDashboardStats = async (req, res) => {
+  try {
+    const surveys = await Survey.find();
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        message: "Database Error",
-        error: err,
-      });
-    }
+    const stats = {
+      totalSurveys: surveys.length,
+      totalFamilyMembers: 0,
+      averageIncome: 0,
+      belowPovertyLine: 0,
+      ownHouse: 0,
+      noElectricity: 0,
+      noToilet: 0,
+      noInsurance: 0,
+      internetUsers: 0,
+      smartphoneUsers: 0,
+    };
+
+    let totalIncome = 0;
+
+    surveys.forEach((survey) => {
+      stats.totalFamilyMembers += Number(survey.familyMembers || 0);
+
+      const income = Number(survey.monthlyIncome || 0);
+      totalIncome += income;
+
+      if (income < 10000) stats.belowPovertyLine++;
+
+      if (survey.ownHouse === "Yes") stats.ownHouse++;
+
+      if (survey.electricity === "No") stats.noElectricity++;
+
+      if (survey.toilet === "No") stats.noToilet++;
+
+      if (survey.healthInsurance === "No") stats.noInsurance++;
+
+      if (survey.internet === "Yes") stats.internetUsers++;
+
+      if (survey.smartphone === "Yes") stats.smartphoneUsers++;
+    });
+
+    stats.averageIncome =
+      surveys.length > 0
+        ? Math.round(totalIncome / surveys.length)
+        : 0;
 
     res.status(200).json({
       success: true,
-      data: result[0],
+      data: stats,
     });
-  });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
 };

@@ -1,190 +1,56 @@
-import db from "../models/db.js";
+import Survey from "../models/Survey.js";
 
-
-export const getAllSurveys = (req, res) => {
-  const sql = "SELECT * FROM surveys ORDER BY id DESC";
-
-  db.query(sql, (err, result) => {
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        message: "Error fetching survey data",
-        error: err,
-      });
-    }
+// ========================================
+// Get All Surveys
+// ========================================
+export const getAllSurveys = async (req, res) => {
+  try {
+    const surveys = await Survey.find().sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
-      data: result,
+      data: surveys,
     });
-  });
-};
-
-
-export const addSurvey = (req, res) => {
-  const {
-  fullName,
-  age,
-  gender,
-  mobile,
-  aadhaar,
-  state,
-  district,
-  village,
-  address,
-  familyMembers,
-  children,
-  elderly,
-  earningMembers,
-  houseType,
-  ownHouse,
-  electricity,
-  toilet,
-  waterSource,
-  occupation,
-  monthlyIncome,
-  employmentStatus,
-  incomeSource,
-  education,
-  childrenSchool,
-  healthInsurance,
-  disability,
-  hospitalDistance,
-  rationCard,
-  pension,
-  welfareScheme,
-  land,
-  vehicle,
-  smartphone,
-  internet,
-  bankAccount,
-  loan,
-  expenses,
-  challenge,
-  assistance,
-} = req.body;
-
- const sql = `
-INSERT INTO surveys (
-fullName,
-age,
-gender,
-mobile,
-aadhaar,
-state,
-district,
-village,
-address,
-familyMembers,
-children,
-elderly,
-earningMembers,
-houseType,
-ownHouse,
-electricity,
-toilet,
-waterSource,
-occupation,
-monthlyIncome,
-employmentStatus,
-incomeSource,
-education,
-childrenSchool,
-healthInsurance,
-disability,
-hospitalDistance,
-rationCard,
-pension,
-welfareScheme,
-land,
-vehicle,
-smartphone,
-internet,
-bankAccount,
-loan,
-expenses,
-challenge,
-assistance
-)
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-`;
-
- const values = [
-  fullName,
-  age,
-  gender,
-  mobile,
-  aadhaar,
-  state,
-  district,
-  village,
-  address,
-  familyMembers,
-  children,
-  elderly,
-  earningMembers,
-  houseType,
-  ownHouse,
-  electricity,
-  toilet,
-  waterSource,
-  occupation,
-  monthlyIncome,
-  employmentStatus,
-  incomeSource,
-  education,
-  childrenSchool,
-  healthInsurance,
-  disability,
-  hospitalDistance,
-  rationCard,
-  pension,
-  welfareScheme,
-  land,
-  vehicle,
-  smartphone,
-  internet,
-  bankAccount,
-  loan,
-  expenses,
-  challenge,
-  assistance,
-];
-console.log("Request Body:", req.body);
-console.log("Values:", values);
-db.query(sql, values, (err, result) => {
-  if (err) {
-    console.log(err);
-    return res.status(500).json({
+  } catch (err) {
+    res.status(500).json({
       success: false,
-      message: "Survey not submitted",
-      error: err,
+      message: "Error fetching survey data",
+      error: err.message,
     });
   }
+};
 
-  res.status(201).json({
-    success: true,
-    message: "Survey submitted successfully",
-    surveyId: result.insertId,
-  });
-});
-}
+// ========================================
+// Add Survey
+// ========================================
+export const addSurvey = async (req, res) => {
+  try {
+    const survey = await Survey.create(req.body);
 
-export const deleteSurvey = (req, res) => {
-  const { id } = req.params;
+    res.status(201).json({
+      success: true,
+      message: "Survey submitted successfully",
+      surveyId: survey._id,
+    });
+  } catch (err) {
+    console.log(err);
 
-  const sql = "DELETE FROM surveys WHERE id = ?";
+    res.status(500).json({
+      success: false,
+      message: "Survey not submitted",
+      error: err.message,
+    });
+  }
+};
 
-  db.query(sql, [id], (err, result) => {
-    if (err) {
-      return res.status(500).json({
-        success: false,
-        message: "Delete failed",
-        error: err,
-      });
-    }
+// ========================================
+// Delete Survey
+// ========================================
+export const deleteSurvey = async (req, res) => {
+  try {
+    const survey = await Survey.findByIdAndDelete(req.params.id);
 
-    if (result.affectedRows === 0) {
+    if (!survey) {
       return res.status(404).json({
         success: false,
         message: "Survey not found",
@@ -195,5 +61,11 @@ export const deleteSurvey = (req, res) => {
       success: true,
       message: "Survey deleted successfully",
     });
-  });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Delete failed",
+      error: err.message,
+    });
+  }
 };

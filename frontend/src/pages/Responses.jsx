@@ -14,8 +14,8 @@ function Responses() {
   const loadSurveys = async () => {
     try {
       const res = await api.get("/survey");
-console.log(res.data);
-setSurveys(res.data.data);
+      console.log(res.data);
+      setSurveys(res.data.data);
     } catch (err) {
       console.error(err);
     }
@@ -66,32 +66,40 @@ setSurveys(res.data.data);
           </thead>
 
           <tbody>
-            {surveys.map((survey) => (
-              <tr key={survey.id}>
-                <td>{survey.id}</td>
-                <td>{survey.fullName}</td>
-                <td>{survey.mobile}</td>
-                <td>{survey.age}</td>
-                <td>{survey.gender}</td>
-                <td>{survey.village}</td>
-                <td>{survey.occupation}</td>
-                <td>₹ {survey.monthlyIncome}</td>
-                <td>{survey.familyMembers}</td>
-                <td>{survey.houseType}</td>
-                <td>{survey.electricity}</td>
-                <td>{survey.toilet}</td>
-                <td>{survey.healthInsurance}</td>
+            {surveys.length > 0 ? (
+              surveys.map((survey) => (
+                <tr key={survey._id}>
+                  <td>{survey._id}</td>
+                  <td>{survey.fullName}</td>
+                  <td>{survey.mobile}</td>
+                  <td>{survey.age}</td>
+                  <td>{survey.gender}</td>
+                  <td>{survey.village}</td>
+                  <td>{survey.occupation}</td>
+                  <td>₹ {survey.monthlyIncome}</td>
+                  <td>{survey.familyMembers}</td>
+                  <td>{survey.houseType}</td>
+                  <td>{survey.electricity}</td>
+                  <td>{survey.toilet}</td>
+                  <td>{survey.healthInsurance}</td>
 
-                <td>
-                  <button
-                    className="delete-btn"
-                    onClick={() => deleteSurvey(survey.id)}
-                  >
-                    Delete
-                  </button>
+                  <td>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteSurvey(survey._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="14" style={{ textAlign: "center" }}>
+                  No Survey Records Found
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

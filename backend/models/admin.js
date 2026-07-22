@@ -1,8 +1,8 @@
-import db from "./db.js";
+import mongoose from "mongoose";
 
+const adminSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
 
-export const findAdminByUsername = (username, callback) => {
-  const sql = "SELECT * FROM admins WHERE username = ?";
-
-  db.query(sql, [username], callback);
-};
+export default mongoose.model("Admin", adminSchema);
