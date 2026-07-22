@@ -1,0 +1,29 @@
+.learn-container{
+    max-width:1000px;
+    margin:50px auto;
+    padding:40px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.learn-container h1{
+    color:#0d6efd;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.learn-container h2{
+    color:#0d6efd;
+    margin-top:30px;
+}
+
+.learn-container p,
+.learn-container li{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.learn-container ul{
+    margin-left:25px;
+}

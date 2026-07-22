@@ -31,13 +31,19 @@ function Home() {
 
             <div className="hero-buttons">
 
-              <Link to="/survey">
-                <button className="survey-btn">
-                  Start Survey
-                </button>
-              </Link>
+  <Link to="/survey">
+    <button className="survey-btn">
+      Start Survey
+    </button>
+  </Link>
 
-            </div>
+  <Link to="/learn-more">
+    <button className="learn-btn">
+      Learn More
+    </button>
+  </Link>
+
+</div>
 
           </div>
 

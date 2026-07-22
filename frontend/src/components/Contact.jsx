@@ -1,19 +1,28 @@
-import "./Contact.css";
+<section className="contact" id="contact">
 
-function Contact() {
-  return (
-    <section className="contact" id="contact">
-      <h2>Contact Us</h2>
+  <h2>Contact Us</h2>
 
-      <div className="contact-box">
-        <p><strong>Email:</strong> povertysurvey@gmail.com</p>
+  <p className="contact-subtitle">
+    Have questions or need assistance? Feel free to contact us.
+  </p>
 
-        <p><strong>Phone:</strong> +91 9876543210</p>
+  <div className="contact-container">
 
-        <p><strong>Location:</strong> Bhubaneswar, Odisha</p>
-      </div>
-    </section>
-  );
-}
+    <div className="contact-card">
+      <h3>📍 Address</h3>
+      <p>Rayagada, Odisha, India</p>
+    </div>
 
-export default Contact;
+    <div className="contact-card">
+      <h3>📧 Email</h3>
+      <p>povertysurvey@gmail.com</p>
+    </div>
+
+    <div className="contact-card">
+      <h3>📞 Phone</h3>
+      <p>+91 8260591547,8260639982</p>
+    </div>
+
+  </div>
+
+</section>

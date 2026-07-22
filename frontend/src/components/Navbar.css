@@ -6,28 +6,29 @@
 
 .navbar {
   width: 100%;
-  height: 75px;
   background: #0d6efd;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 60px;
+  padding: 15px 8%;
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-wrap: wrap;
 }
 
 .logo {
   color: white;
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -52,4 +53,85 @@
 .admin-btn:hover {
   background: #ffd43b;
   color: black !important;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+
+  .admin-btn {
+    padding: 8px 14px;
+  }
+}
+
+/* =========================
+   Small Phones
+========================= */
+
+@media (max-width: 480px) {
+
+  .logo {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
+
+  .admin-btn {
+    width: 180px;
+    text-align: center;
+  }
 }

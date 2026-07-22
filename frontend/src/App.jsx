@@ -7,6 +7,7 @@ import AdminLogin from "./pages/AdminLogin";
 import Dashboard from "./pages/Dashboard";
 import Responses from "./pages/Responses";
 import Reports from "./pages/Reports";
+import LearnMore from "./pages/LearnMore";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/learn-more" element={<LearnMore />} />
       </Routes>
     </BrowserRouter>
   );
