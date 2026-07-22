@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import api from "../api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   const [stats, setStats] = useState({
     totalSurveys: 0,
     totalFamilyMembers: 0,
@@ -20,6 +22,12 @@ function Dashboard() {
   });
 
   useEffect(() => {
+    // Protect dashboard
+    if (localStorage.getItem("isAdmin") !== "true") {
+      navigate("/admin");
+      return;
+    }
+
     loadDashboard();
   }, []);
 
@@ -32,12 +40,26 @@ function Dashboard() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("username");
+
+    alert("Logged out successfully!");
+    navigate("/admin");
+  };
+
   return (
     <>
       <Navbar />
 
       <div className="dashboard-container">
-        <h1>Admin Dashboard</h1>
+        <div className="dashboard-header">
+          <h1>Admin Dashboard</h1>
+
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
 
         <div className="card-container">
           <div className="card">
