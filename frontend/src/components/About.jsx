@@ -1,10 +1,7 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 function About() {
   return (
     <>
-      <Navbar />
 
       <div className="about-container">
         <h1>About Us</h1>
@@ -16,7 +13,7 @@ function About() {
         </p>
       </div>
 
-      <Footer />
+     
     </>
   );
 }

@@ -1,10 +1,9 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
 
 function Contact() {
   return (
     <>
-      <Navbar />
+     
 
       <div className="contact-container">
         <h1>Contact Us</h1>
@@ -14,7 +13,7 @@ function Contact() {
         <p>Address: Bhubaneswar, Odisha, India</p>
       </div>
 
-      <Footer />
+     
     </>
   );
 }
