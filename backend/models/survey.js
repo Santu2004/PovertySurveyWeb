@@ -1,109 +1,69 @@
-import db from "./db.js";
+import mongoose from "mongoose";
 
-export const getAllSurveys = (callback) => {
-  const sql = "SELECT * FROM surveys ORDER BY id DESC";
-  db.query(sql, callback);
-};
+const surveySchema = new mongoose.Schema(
+  {
+    // Personal Information
+    fullName: String,
+    age: Number,
+    gender: String,
+    mobile: String,
+    aadhaar: String,
+    state: String,
+    district: String,
+    village: String,
+    address: String,
 
+    // Family Details
+    familyMembers: Number,
+    children: Number,
+    elderly: Number,
+    earningMembers: Number,
 
-export const addSurvey = (data, callback) => {
-  const sql = `
-    INSERT INTO surveys (
-      fullName,
-      age,
-      gender,
-      mobile,
-      aadhaar,
-      state,
-      district,
-      village,
-      address,
-      familyMembers,
-      children,
-      elderly,
-      earningMembers,
-      houseType,
-      ownHouse,
-      electricity,
-      toilet,
-      waterSource,
-      occupation,
-      monthlyIncome,
-      employmentStatus,
-      incomeSource,
-      education,
-      childrenSchool,
-      healthInsurance,
-      disability,
-      hospitalDistance,
-      rationCard,
-      pension,
-      welfareScheme,
-      land,
-      vehicle,
-      smartphone,
-      internet,
-      bankAccount,
-      loan,
-      expenses,
-      challenge,
-      assistance
-    )
-    VALUES (
-      ?,?,?,?,?,?,?,?,?,?,
-      ?,?,?,?,?,?,?,?,?,?,
-      ?,?,?,?,?,?,?,?,?,?,
-      ?,?,?,?,?,?,?,?,?
-    )
-  `;
+    // Housing
+    houseType: String,
+    ownHouse: String,
+    electricity: String,
+    toilet: String,
+    waterSource: String,
 
-  const values = [
-    data.fullName,
-    data.age,
-    data.gender,
-    data.mobile,
-    data.aadhaar,
-    data.state,
-    data.district,
-    data.village,
-    data.address,
-    data.familyMembers,
-    data.children,
-    data.elderly,
-    data.earningMembers,
-    data.houseType,
-    data.ownHouse,
-    data.electricity,
-    data.toilet,
-    data.waterSource,
-    data.occupation,
-    data.monthlyIncome,
-    data.employmentStatus,
-    data.incomeSource,
-    data.education,
-    data.childrenSchool,
-    data.healthInsurance,
-    data.disability,
-    data.hospitalDistance,
-    data.rationCard,
-    data.pension,
-    data.welfareScheme,
-    data.land,
-    data.vehicle,
-    data.smartphone,
-    data.internet,
-    data.bankAccount,
-    data.loan,
-    data.expenses,
-    data.challenge,
-    data.assistance,
-  ];
+    // Income
+    occupation: String,
+    monthlyIncome: Number,
+    employmentStatus: String,
+    incomeSource: String,
 
-  db.query(sql, values, callback);
-};
+    // Education
+    education: String,
+    childrenSchool: String,
 
+    // Health
+    healthInsurance: String,
+    disability: String,
+    hospitalDistance: Number,
 
-export const deleteSurvey = (id, callback) => {
-  const sql = "DELETE FROM surveys WHERE id = ?";
-  db.query(sql, [id], callback);
-};
+    // Government Benefits
+    rationCard: String,
+    pension: String,
+    welfareScheme: String,
+
+    // Assets
+    land: String,
+    vehicle: String,
+    smartphone: String,
+    internet: String,
+
+    // Financial Status
+    bankAccount: String,
+    loan: String,
+    expenses: String,
+
+    // Feedback
+    challenge: String,
+    assistance: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
+export default mongoose.model("Survey", surveySchema);
