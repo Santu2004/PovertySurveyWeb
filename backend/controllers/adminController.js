@@ -5,7 +5,7 @@ export const adminLogin = (req, res) => {
   const { username, password } = req.body;
 
   const sql =
-    "SELECT * FROM admins WHERE username = ? AND password = ?";
+    "SELECT * FROM admin WHERE username = ? AND password = ?";
 
   db.query(sql, [username, password], (err, result) => {
     if (err) {
