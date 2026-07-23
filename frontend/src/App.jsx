@@ -10,6 +10,7 @@ import Reports from "./pages/Reports";
 import LearnMore from "./pages/LearnMore";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import CategoryDetails from "./pages/CategoryDetails";
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/responses" element={<Responses />} />
         <Route path="/reports" element={<Reports />} />
+        <Route
+  path="/category/:type"
+  element={<CategoryDetails />}
+/>
       </Routes>
     </BrowserRouter>
   );

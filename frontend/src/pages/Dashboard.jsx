@@ -48,6 +48,12 @@ function Dashboard() {
     navigate("/");
   };
 
+  const openCategory = (type, title) => {
+    navigate(`/category/${type}`, {
+      state: { title },
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -62,52 +68,94 @@ function Dashboard() {
         </div>
 
         <div className="card-container">
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => openCategory("all", "Total Surveys")}
+          >
             <h2>Total Surveys</h2>
             <p>{stats.totalSurveys}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("family-members", "Total Family Members")
+            }
+          >
             <h2>Total Family Members</h2>
             <p>{stats.totalFamilyMembers}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => openCategory("income", "Average Income")}
+          >
             <h2>Average Income</h2>
             <p>₹ {Number(stats.averageIncome || 0).toFixed(0)}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("below-poverty", "Below Poverty Line")
+            }
+          >
             <h2>Below Poverty Line</h2>
             <p>{stats.belowPovertyLine}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => openCategory("own-house", "Own Houses")}
+          >
             <h2>Own Houses</h2>
             <p>{stats.ownHouse}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("no-electricity", "No Electricity")
+            }
+          >
             <h2>No Electricity</h2>
             <p>{stats.noElectricity}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => openCategory("no-toilet", "No Toilet")}
+          >
             <h2>No Toilet</h2>
             <p>{stats.noToilet}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("no-insurance", "No Health Insurance")
+            }
+          >
             <h2>No Health Insurance</h2>
             <p>{stats.noInsurance}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("internet-users", "Internet Users")
+            }
+          >
             <h2>Internet Users</h2>
             <p>{stats.internetUsers}</p>
           </div>
 
-          <div className="card">
+          <div
+            className="card"
+            onClick={() =>
+              openCategory("smartphone-users", "Smartphone Users")
+            }
+          >
             <h2>Smartphone Users</h2>
             <p>{stats.smartphoneUsers}</p>
           </div>
