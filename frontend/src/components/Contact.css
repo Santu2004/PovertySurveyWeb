@@ -1,106 +1,60 @@
-/* ===========================
-   Contact Section
-=========================== */
-
-.contact{
-    padding:80px 20px;
-  
-    color:white;
+.contact-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  line-height: 1.8;
 }
 
-.contact h2{
-    color:#0d6efd;
-    text-align:center;
-    font-size:36px;
-    margin-bottom:15px;
+.contact-container h1 {
+  text-align: center;
+  color: #0d6efd;
+  margin-bottom: 30px;
+  font-size: 36px;
 }
 
-.contact-subtitle{
-    text-align:center;
-    font-size:18px;
-    max-width:700px;
-    margin:0 auto 50px;
-    line-height:1.8;
-    color:#f1f1f1;
+.contact-container h2 {
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-left: 5px solid #0d6efd;
+  padding-left: 12px;
 }
 
-.contact-container{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+.contact-container p {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 12px;
 }
 
-.contact-card{
-    background:white;
-    color:#333;
-    padding:35px 25px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    transition:all .3s ease;
+.contact-container strong {
+  color: #0d6efd;
 }
 
-.contact-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 30px rgba(0,0,0,.25);
+.contact-container ul {
+  margin-left: 25px;
+  margin-top: 10px;
 }
 
-.contact-card h3{
-    color:#0d6efd;font-size:24px;
-    margin-bottom:15px;
+.contact-container li {
+  margin-bottom: 12px;
+  color: #444;
+  font-size: 16px;
 }
 
-.contact-card p{
-    font-size:17px;
-    color:#555;
-    line-height:1.7;
-}
+@media (max-width: 768px) {
+  .contact-container {
+    margin: 20px;
+    padding: 25px;
+  }
 
-/* Responsive */
+  .contact-container h1 {
+    font-size: 28px;
+  }
 
-@media(max-width:768px){
-
-.contact{
-    padding:60px 15px;
-}
-
-.contact h2{
-    font-size:32px;
-}
-
-.contact-subtitle{
-    font-size:16px;
-    margin-bottom:35px;
-}
-
-.contact-card{
-    padding:25px 20px;
-}
-
-.contact-card h3{
-    font-size:22px;
-}
-
-.contact-card p{
-    font-size:16px;
-}
-
-}
-
-@media(max-width:480px){
-
-.contact h2{
-    font-size:28px;
-}
-
-.contact-subtitle{
-    font-size:15px;
-}
-
-.contact-card{
-    padding:20px 15px;
-}
-
+  .contact-container h2 {
+    font-size: 22px;
+  }
 }
