@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import About from "../components/About";
-import Contact from "../components/Contact";
 import homeImage from "../assets/home.png";
 
 function Home() {
@@ -96,9 +94,7 @@ function Home() {
 
         </section>
 
-        <About />
-
-        <Contact />
+        
 
       </div>
 

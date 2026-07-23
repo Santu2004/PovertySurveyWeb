@@ -22,9 +22,8 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    // Protect dashboard
     if (localStorage.getItem("isAdmin") !== "true") {
-      navigate("/admin");
+      navigate("/admin-login");
       return;
     }
 
@@ -45,7 +44,8 @@ function Dashboard() {
     localStorage.removeItem("username");
 
     alert("Logged out successfully!");
-    navigate("/admin");
+
+    navigate("/");
   };
 
   return (
