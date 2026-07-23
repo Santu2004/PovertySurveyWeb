@@ -171,17 +171,16 @@ const exportExcel = () => {
       value: report.totalFamilyMembers,
     },
   ];
-
-  const incomeData = [
-    {
-      name: "Average Income",
-      value: report.averageIncome,
-    },
-    {
-      name: "Below Poverty",
-      value: report.belowPovertyLine,
-    },
-  ];
+const povertyData = [
+  {
+    name: "Below Poverty",
+    value: report.belowPovertyLine,
+  },
+  {
+    name: "Above Poverty",
+    value: report.totalSurveys - report.belowPovertyLine,
+  },
+];
 
   const facilityData = [
     {
@@ -327,27 +326,35 @@ const exportExcel = () => {
             Income Analysis
         =========================== */}
 
-        <div className="chart-box">
+       <div className="chart-box">
 
-          <h2>Income Analysis</h2>
+  <h2>Poverty Status</h2>
 
-          <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={incomeData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
+  <ResponsiveContainer width="100%" height={400}>
+    <PieChart>
 
-              <Bar
-                dataKey="value"
-                fill="#28a745"
-              />
+      <Pie
+        data={povertyData}
+        cx="50%"
+        cy="50%"
+        outerRadius={130}
+        dataKey="value"
+        nameKey="name"
+        label={({ name, percent }) =>
+          `${name} ${(percent * 100).toFixed(1)}%`
+        }
+      >
+        <Cell fill="#dc3545" />
+        <Cell fill="#198754" />
+      </Pie>
 
-            </BarChart>
-          </ResponsiveContainer>
+      <Tooltip />
+      <Legend />
 
-        </div>
+    </PieChart>
+  </ResponsiveContainer>
+
+</div>
                 {/* ==========================
             Housing & Basic Facilities
         =========================== */}
