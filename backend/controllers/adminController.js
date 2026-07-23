@@ -95,3 +95,88 @@ export const getDashboardStats = async (req, res) => {
     });
   }
 };
+
+// ===============================
+// Category Details
+// ===============================
+export const getCategoryData = async (req, res) => {
+  try {
+    const { type } = req.params;
+
+    let data = [];
+
+    switch (type) {
+      case "all":
+        data = await Survey.find();
+        break;
+
+      case "family-members":
+        data = await Survey.find().sort({ familyMembers: -1 });
+        break;
+
+      case "average-income":
+      case "income":
+        data = await Survey.find().sort({ monthlyIncome: -1 });
+        break;
+
+      case "below-poverty":
+        data = await Survey.find({
+          monthlyIncome: { $lt: 10000 },
+        });
+        break;
+
+      case "own-house":
+        data = await Survey.find({
+          ownHouse: "Yes",
+        });
+        break;
+
+      case "no-electricity":
+        data = await Survey.find({
+          electricity: "No",
+        });
+        break;
+
+      case "no-toilet":
+        data = await Survey.find({
+          toilet: "No",
+        });
+        break;
+
+      case "no-insurance":
+        data = await Survey.find({
+          healthInsurance: "No",
+        });
+        break;
+
+      case "internet-users":
+        data = await Survey.find({
+          internet: "Yes",
+        });
+        break;
+
+      case "smartphone-users":
+        data = await Survey.find({
+          smartphone: "Yes",
+        });
+        break;
+
+      default:
+        return res.status(404).json({
+          success: false,
+          message: "Invalid category",
+        });
+    }
+
+    res.status(200).json({
+      success: true,
+      count: data.length,
+      data,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
