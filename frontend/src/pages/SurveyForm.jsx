@@ -34,6 +34,8 @@ function SurveyForm() {
     gender: "",
     mobile: "",
     aadhaar: "",
+    pincode: "",
+block: "",
     state: "",
     district: "",
     village: "",
@@ -94,6 +96,35 @@ function SurveyForm() {
       [e.target.name]: e.target.value,
     });
   };
+  const getPincodeDetails = async (pincode) => {
+  if (pincode.length !== 6) return;
+
+  try {
+    const response = await fetch(
+      `https://api.postalpincode.in/pincode/${pincode}`
+    );
+
+    const data = await response.json();
+
+    if (
+      data[0].Status === "Success" &&
+      data[0].PostOffice.length > 0
+    ) {
+      const office = data[0].PostOffice[0];
+
+      setFormData((prev) => ({
+        ...prev,
+        state: office.State,
+        district: office.District,
+        block: office.Block || "",
+      }));
+    } else {
+      alert("Invalid PIN Code");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
  const nextStep = () => {
   const currentStepFields = document.querySelectorAll(
@@ -215,32 +246,63 @@ function SurveyForm() {
   required
 />
                 </div>
+                <div className="input-group">
+  <label>
+    PIN Code <span className="required">*</span>
+  </label>
+
+  <input
+    type="text"
+    name="pincode"
+    value={formData.pincode}
+    maxLength={6}
+    pattern="[0-9]{6}"
+    onChange={(e) => {
+      handleChange(e);
+      getPincodeDetails(e.target.value);
+    }}
+    required
+  />
+</div>
 
                 <div className="input-group">
                                 <label>
   State <span className="required">*</span>
 </label>
                   <input
-                    type="text"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                    required
-                  />
+  type="text"
+  name="state"
+  value={formData.state}
+  readOnly
+  required
+/>
                 </div>
 
                 <div className="input-group">
                                 <label>
   District <span className="required">*</span>
 </label>
-                  <input
-                    type="text"
-                    name="district"
-                    value={formData.district}
-                    onChange={handleChange}
-                    required
-                  />
+                 <input
+  type="text"
+  name="district"
+  value={formData.district}
+  readOnly
+  required
+/>
                 </div>
+                <div className="input-group">
+  <label>
+    Block <span className="required">*</span>
+  </label>
+
+  <input
+    type="text"
+    name="block"
+    value={formData.block}
+    readOnly
+    required
+  />
+</div>
 
                 <div className="input-group">
                                 <label>
