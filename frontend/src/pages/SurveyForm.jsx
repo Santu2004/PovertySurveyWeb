@@ -62,7 +62,7 @@ block: "",
 
     
     education: "",
-    childrenSchool: "",
+    childrenStatus: "",
 
     
     healthInsurance: "",
@@ -113,11 +113,10 @@ block: "",
       const office = data[0].PostOffice[0];
 
       setFormData((prev) => ({
-        ...prev,
-        state: office.State,
-        district: office.District,
-        block: office.Block || "",
-      }));
+  ...prev,
+  state: office.State,
+  district: office.District,
+}));
     } else {
       alert("Invalid PIN Code");
     }
@@ -296,12 +295,12 @@ block: "",
   </label>
 
   <input
-    type="text"
-    name="block"
-    value={formData.block}
-    readOnly
-    required
-  />
+  type="text"
+  name="block"
+  value={formData.block}
+  onChange={handleChange}
+  required
+/>
 </div>
 
                 <div className="input-group">
@@ -575,19 +574,16 @@ block: "",
     </div>
 
     <div className="input-group">
-      <label>Are all children attending school?</label>
-      <select
-        name="childrenSchool"
-        value={formData.childrenSchool}
-        onChange={handleChange}
-        
-      >
-        <option value="">Select</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        <option value="Not Applicable">Not Applicable</option>
-      </select>
-    </div>
+  <label>What are your children currently doing?</label>
+
+  <textarea
+    rows="3"
+    name="childrenStatus"
+    value={formData.childrenStatus}
+    onChange={handleChange}
+    placeholder="Example: Elder son is studying B.Sc., younger daughter is in Class 8."
+  ></textarea>
+</div>
 
     <h2 className="section-title">Health</h2>
 
