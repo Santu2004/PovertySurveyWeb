@@ -8,6 +8,14 @@ const surveySchema = new mongoose.Schema(
   type: Date,
   required: true,
 },
+pincode: {
+  type: String,
+  required: true,
+},
+block: {
+  type: String,
+  required: true,
+},
     gender: String,
     mobile: String,
     aadhaar: String,
