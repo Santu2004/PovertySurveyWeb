@@ -30,7 +30,7 @@ function SurveyForm() {
   const [formData, setFormData] = useState({
 
     fullName: "",
-    age: "",
+    dob: "",
     gender: "",
     mobile: "",
     aadhaar: "",
@@ -154,29 +154,18 @@ function SurveyForm() {
                 </div>
 
                 <div className="input-group">
-                                <label>
-  Age <span className="required">*</span>
-</label>
-           <input
-  type="number"
-  name="age"
-  value={formData.age}
-  onChange={(e) => {
-    const value = e.target.value;
+  <label>
+    Date of Birth <span className="required">*</span>
+  </label>
 
-    if (
-      value === "" ||
-      (Number(value) >= 1 && Number(value) <= 120)
-    ) {
-      setFormData({
-        ...formData,
-        age: value,
-      });
-    }
-  }}
-  required
-/>
-                </div>
+  <input
+    type="date"
+    name="dob"
+    value={formData.dob}
+    onChange={handleChange}
+    required
+  />
+</div>
 
                 <div className="input-group">
                                 <label>
