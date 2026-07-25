@@ -45,7 +45,7 @@ block: {
 
     // Education
     education: String,
-    childrenSchool: String,
+   childrenStatus: String,
 
     // Health
     healthInsurance: String,
