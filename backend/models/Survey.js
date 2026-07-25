@@ -4,7 +4,10 @@ const surveySchema = new mongoose.Schema(
   {
     // Personal Information
     fullName: String,
-    age: Number,
+    dob: {
+  type: Date,
+  required: true,
+},
     gender: String,
     mobile: String,
     aadhaar: String,
